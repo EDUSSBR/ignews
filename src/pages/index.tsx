@@ -7,6 +7,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Ignews</title>     
+        
       </Head>
     <body>
       Hello World
