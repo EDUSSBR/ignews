@@ -5,11 +5,12 @@ import Image from 'next/image'
 const Home: NextPage = () => {
   return (
     <>
-      <header>
+      <Head>
         <title>Ignews</title>     
-      </header>
+      </Head>
     <body>
       Hello World
+      
     </body>
     </>)
 }
