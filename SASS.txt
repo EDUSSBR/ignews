@@ -1,0 +1,4 @@
+Sempre que for criar uma estilização com Next (.module.css) usar uma classe 
+ou ID pois ele gera  automaticamente hash nos nomes e torna scoped
+
+-- Instalar Sass npm i sass
