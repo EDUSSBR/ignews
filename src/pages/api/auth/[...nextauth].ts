@@ -47,16 +47,16 @@ export default NextAuth({
               )
             )
           )
-        //   q.Create(
+        // try {
+        //   await fauna.query( q.Create(
         //     q.Collection('users'), {data: { email }})
-        
+        //   )
 
-        return true
+        // return true
       } catch (e) {
         console.log(e)
         return false
       }
-
-    }
   }
+}
 })
