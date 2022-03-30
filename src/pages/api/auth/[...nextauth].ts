@@ -3,6 +3,7 @@ import GithubProvider from "next-auth/providers/github"
 import { fauna } from '../../../services/fauna'
 import { query as q } from "faunadb"
 import toast from "react-hot-toast"
+import { getSession } from "next-auth/react"
 
 
 //global config
@@ -22,17 +23,19 @@ export default NextAuth({
   ],
   callbacks: {
     async session({session}) {
-      const {email} = session.user
-      console.log(email)
+
+      console.log(session)
+      // const {email} = session.user
+      // console.log(email)
       try {
         const userActiveSubscription = await fauna.query(
           q.Get(
             q.Intersection([
               q.Match(
                 q.Index('subscription_by_user_ref'),
-                q.Select('ref', q.Get(         //daqui pra baixo seleciona o ref do usuario e a query acima busca usndo esse index
+                q.Select("ref", q.Get(         //daqui pra baixo seleciona o ref do usuario e a query acima busca usndo esse index
                   q.Match(q.Index('user_by_email'),
-                    q.Casefold(email as string)
+                    q.Casefold(session.user.email)
                   )
                 )
                 )
@@ -55,6 +58,7 @@ export default NextAuth({
       }
     } ,
     async signIn( {user, profile, account}  ) {
+      
       const { email } = user
 
      
