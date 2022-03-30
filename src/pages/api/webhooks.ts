@@ -8,6 +8,7 @@ async function buffer(readable: Readable) {
     const chunks = [];
 
     for await (const chunk of readable) {
+        
         chunks.push(
             typeof chunk === "string" ? Buffer.from(chunk) : chunk
         )
@@ -40,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
         // console.log("evento recebido.")
         const {type} = event
-        //CONTOLADOR DE EVENTOS
+        //CONTOLADOR DE EVENTOS     //OLHAR O PATTERN CHAIN OF RESPONSABILITY
         if (relevantEvents.has(type)){
             try {
             switch(type) {
